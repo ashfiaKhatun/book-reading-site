@@ -1,26 +1,72 @@
 import { useLoaderData, useParams } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const BookDetails = () => {
 
     const books = useLoaderData();
-    const {bookId} = useParams();
+    const { bookId } = useParams();
 
     const book = books.find(data => data.bookId === parseInt(bookId));
 
-    const {bookName} = book;
+    const { image, bookName, author, category, review, tags, totalPages, publisher, yearOfPublishing, rating } = book;
+
+    const handleRead = () => {
+        toast('You have successfully read this book!')
+    }
+    const handleWishlist = () => {
+        toast('This book is added to wishlist')
+    }
 
     return (
         <div>
-            <div className="hero min-h-screen bg-base-200">
-                <div className="hero-content flex-col lg:flex-row">
-                    <img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" className="max-w-sm rounded-lg shadow-2xl" />
-                    <div>
-                        <h1 className="text-5xl font-bold">{bookName}</h1>
-                        <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                        <button className="btn btn-primary">Get Started</button>
+            <div className="hero min-h-screen">
+                <div className="hero-content flex-col lg:flex-row gap-8">
+                    <img src={image} className="w-1/2 bg-base-200 p-20 rounded-2xl" />
+                    <div className="space-y-4">
+                        <h1 className="text-4xl font-bold">{bookName}</h1>
+
+                        <p className="text-xl font-medium">By: {author}</p>
+
+                        <hr className="border" />
+
+                        <p className="text-xl font-medium">{category}</p>
+
+                        <hr className="border" />
+
+                        <p><span className="font-bold">Review:</span> {review}</p>
+
+                        <div className="space-x-2"><span className="font-bold">Tag</span>
+                            {
+                                tags.map((tag, idx) => <div key={idx} className="badge bg-[#23BE0A] text-[#23BE0A] font-medium p-3 bg-opacity-10">#{tag}</div>)
+                            }
+                        </div>
+
+                        <hr className="border" />
+
+                        <div className="flex justify-between w-3/5">
+                            <div className="space-y-2">
+                                <p>Name of Pages: </p>
+                                <p>Publisher: </p>
+                                <p>Year of Publishing: </p>
+                                <p>Rating: </p>
+                            </div>
+                            <div className="font-bold space-y-2">
+                                <p>{totalPages}</p>
+                                <p>{publisher}</p>
+                                <p>{yearOfPublishing}</p>
+                                <p>{rating}</p>
+                            </div>
+                        </div>
+
+                        <div className="font-semibold text-lg">
+                            <button onClick={handleRead} className="btn bg-base-100 mr-4 px-7">Read</button>
+                            <button onClick={handleWishlist} className="btn text-white bg-[#50B1C9]">Wishlist</button>
+                        </div>
                     </div>
                 </div>
             </div>
+            <ToastContainer></ToastContainer>
         </div>
     );
 };
