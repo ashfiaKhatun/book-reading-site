@@ -20,7 +20,7 @@ const Header = () => {
                             {list}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl">daisyUI</a>
+                    <a className="btn btn-ghost text-xl"><span className="text-green-700 font-extrabold">Digital</span> Bookshelf</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">

@@ -20,7 +20,7 @@ const Book = ({ book }) => {
                     <hr className="border-dashed" />
                     <div className="flex">
                         <p>{category}</p>
-                        <p className="flex gap-2 justify-end items-center">{rating}</p>
+                        <p className="flex gap-2 justify-end items-center"><FaRegStar></FaRegStar>{rating}</p>
                     </div>
                 </div>
             </div>

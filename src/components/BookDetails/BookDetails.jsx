@@ -1,6 +1,8 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { getStoredData, setStoredData } from "../../utility/localStorageRead";
+import { getStoredDataWishlist, setStoredDataWishlist } from "../../utility/localStorageWishlist";
 
 const BookDetails = () => {
 
@@ -11,12 +13,52 @@ const BookDetails = () => {
 
     const { image, bookName, author, category, review, tags, totalPages, publisher, yearOfPublishing, rating } = book;
 
+    const bookIdInt = parseInt(bookId)
+
+    // read option
     const handleRead = () => {
-        toast('You have successfully read this book!')
+        const storedData = getStoredData();
+        const findData = storedData.find(id => id === bookIdInt);
+        if (findData) {
+            toast('This book is already added');
+        }
+        else {
+            toast('This book is successfully added')
+        }
+
+        setStoredData(bookIdInt);
     }
+
+
+    // wishlist option
     const handleWishlist = () => {
-        toast('This book is added to wishlist')
+        const getReadStoredValue = getStoredData();
+        const readBookExists = getReadStoredValue.find(id => id === bookId);
+
+        const storedData = getStoredDataWishlist();
+        const findData = storedData.find(id => id === bookIdInt);
+        
+        if(readBookExists){
+            toast('You already read this book')
+        }
+        else {
+            if (findData) {
+                toast('This book is already added');
+            }
+            else {
+                toast('This book is successfully added')
+            }
+        }
+
+        setStoredDataWishlist(bookIdInt);
+
+
+
+
+        // toast('This book is added to wishlist')
     }
+
+
 
     return (
         <div>
