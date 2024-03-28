@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 const Header = () => {
 
     const list = <>
-        <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='/listed-book'>Listed Books</NavLink></li>
+        <li className="mr-4"><NavLink to='/'>Home</NavLink></li>
+        <li className="mr-4"><NavLink to='/listed-book'>Listed Books</NavLink></li>
         <li><NavLink to='/pages-to-read'>Pages To Read</NavLink></li>
     </>
 

@@ -29,11 +29,7 @@ const WishBook = () => {
 
 
     return (
-        <div>
-            {
-                readBooks.map(wishBookList => <WishBookList key={wishBookList.bookId} wishBookList={wishBookList}></WishBookList>)
-            }
-        </div>
+        
     );
 };
 
