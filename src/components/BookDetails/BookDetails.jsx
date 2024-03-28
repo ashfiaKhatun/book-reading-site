@@ -20,10 +20,10 @@ const BookDetails = () => {
         const storedData = getStoredData();
         const findData = storedData.find(id => id === bookIdInt);
         if (findData) {
-            toast('This book is already added');
+            toast('This book is already added to Reading List');
         }
         else {
-            toast('This book is successfully added')
+            toast('This book is successfully added to Reading List')
         }
 
         setStoredData(bookIdInt);
@@ -39,23 +39,18 @@ const BookDetails = () => {
         const findData = storedData.find(id => id === bookIdInt);
         
         if(readBookExists){
-            toast('You already read this book')
+            toast('You have already read this book')
         }
         else {
             if (findData) {
-                toast('This book is already added');
+                toast('This book is already added to Wishlist');
             }
             else {
-                toast('This book is successfully added')
+                toast('This book is successfully added to Wishlist');
             }
         }
 
         setStoredDataWishlist(bookIdInt);
-
-
-
-
-        // toast('This book is added to wishlist')
     }
 
 
@@ -64,15 +59,15 @@ const BookDetails = () => {
         <div>
             <div className="hero min-h-screen">
                 <div className="hero-content flex-col lg:flex-row gap-8">
-                    <img src={image} className="w-1/2 bg-base-200 p-20 rounded-2xl" />
+                    <img src={image} className="lg:w-1/2 bg-base-200 py-6 lg:py-20 px-20 rounded-2xl" />
                     <div className="space-y-4">
-                        <h1 className="text-4xl font-bold">{bookName}</h1>
+                        <h1 className="text-2xl lg:text-4xl font-bold">{bookName}</h1>
 
-                        <p className="text-xl font-medium">By: {author}</p>
+                        <p className="text-lg lg:text-xl font-medium">By : {author}</p>
 
                         <hr className="border" />
 
-                        <p className="text-xl font-medium">{category}</p>
+                        <p className="text-lg lg:text-xl font-medium">{category}</p>
 
                         <hr className="border" />
 
@@ -86,7 +81,7 @@ const BookDetails = () => {
 
                         <hr className="border" />
 
-                        <div className="flex justify-between w-3/5">
+                        <div className="flex justify-between lg:w-3/5">
                             <div className="space-y-2">
                                 <p>Name of Pages: </p>
                                 <p>Publisher: </p>

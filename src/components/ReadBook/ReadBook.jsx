@@ -28,7 +28,7 @@ const ReadBook = () => {
     }, [])
 
     return (
-        <div>
+        <div className="px-2 lg:px-0">
             {
                 readBooks.map(readBookList => <ReadBookList key={readBookList.bookId} readBookList={readBookList}></ReadBookList>)
             }
