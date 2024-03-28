@@ -30,7 +30,7 @@ const PagesToRead = () => {
     };
 
     return (
-        <div>
+        <div className='max-w-6xl mx-auto mt-16 bg-base-200 p-8 rounded-2xl'>
             <BarChart width={600} height={300} data={getValue}>
                 <XAxis dataKey="bookName" />
                 <YAxis />
